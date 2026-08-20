@@ -1,6 +1,6 @@
 import { FlaskConical } from "lucide-react";
 
-export function PrototypeBanner({ note }: { note?: string }) {
+export function PrototypeBanner({ note }: { note?: string | undefined }) {
   return (
     <div className="flex items-start gap-3 rounded-xl border border-warning/30 bg-warning/8 px-4 py-3">
       <FlaskConical className="mt-0.5 size-4 shrink-0 text-warning" />

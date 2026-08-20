@@ -2,12 +2,12 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  title?: string;
-  description?: string;
-  action?: ReactNode;
+  title?: string | undefined;
+  description?: string | undefined;
+  action?: ReactNode | undefined;
   children: ReactNode;
-  className?: string;
-  bodyClassName?: string;
+  className?: string | undefined;
+  bodyClassName?: string | undefined;
 }
 
 export function Panel({
@@ -42,8 +42,8 @@ export function PageHeader({
   action,
 }: {
   title: string;
-  subtitle?: string;
-  action?: ReactNode;
+  subtitle?: string | undefined;
+  action?: ReactNode | undefined;
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">

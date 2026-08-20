@@ -31,9 +31,9 @@ export function toneFromStatus(status: string): BadgeTone {
 
 interface Props {
   label: string;
-  tone?: BadgeTone;
-  dot?: boolean;
-  className?: string;
+  tone?: BadgeTone | undefined;
+  dot?: boolean | undefined;
+  className?: string | undefined;
 }
 
 export function StatusBadge({ label, tone, dot = true, className }: Props) {

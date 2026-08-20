@@ -17,15 +17,15 @@ export interface Series {
   name: string;
   color: string;
   unit: string;
-  yAxisId?: "left" | "right";
+  yAxisId?: "left" | "right" | undefined;
 }
 
 interface Props {
   data: SensorReading[];
   series: Series[];
-  height?: number;
-  threshold?: number;
-  dualAxis?: boolean;
+  height?: number | undefined;
+  threshold?: number | undefined;
+  dualAxis?: boolean | undefined;
 }
 
 export function SensorChart({ data, series, height = 280, threshold, dualAxis }: Props) {

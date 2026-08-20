@@ -5,15 +5,15 @@ import { StatusBadge, type BadgeTone } from "@/components/StatusBadge";
 interface Props {
   label: string;
   value: string | number;
-  unit?: string;
+  unit?: string | undefined;
   icon: LucideIcon;
-  status?: string;
-  tone?: BadgeTone;
-  rangeText?: string;
-  trend?: number;
-  note?: string;
-  size?: "md" | "lg";
-  className?: string;
+  status?: string | undefined;
+  tone?: BadgeTone | undefined;
+  rangeText?: string | undefined;
+  trend?: number | undefined;
+  note?: string | undefined;
+  size?: "md" | "lg" | undefined;
+  className?: string | undefined;
 }
 
 export function MetricCard({
