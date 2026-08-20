@@ -10,33 +10,64 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AiPredictionRouteImport } from './routes/ai-prediction'
+import { Route as LiveMonitoringRouteImport } from './routes/live-monitoring'
+import { Route as WaterQualityRouteImport } from './routes/water-quality'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiPredictionRoute = AiPredictionRouteImport.update({
+  id: '/ai-prediction',
+  path: '/ai-prediction',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveMonitoringRoute = LiveMonitoringRouteImport.update({
+  id: '/live-monitoring',
+  path: '/live-monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WaterQualityRoute = WaterQualityRouteImport.update({
+  id: '/water-quality',
+  path: '/water-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-prediction': typeof AiPredictionRoute
+  '/live-monitoring': typeof LiveMonitoringRoute
+  '/water-quality': typeof WaterQualityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-prediction': typeof AiPredictionRoute
+  '/live-monitoring': typeof LiveMonitoringRoute
+  '/water-quality': typeof WaterQualityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-prediction': typeof AiPredictionRoute
+  '/live-monitoring': typeof LiveMonitoringRoute
+  '/water-quality': typeof WaterQualityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/ai-prediction' | '/live-monitoring' | '/water-quality'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/ai-prediction' | '/live-monitoring' | '/water-quality'
+  id:
+    '__root__' | '/' | '/ai-prediction' | '/live-monitoring' | '/water-quality'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiPredictionRoute: typeof AiPredictionRoute
+  LiveMonitoringRoute: typeof LiveMonitoringRoute
+  WaterQualityRoute: typeof WaterQualityRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +79,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-prediction': {
+      id: '/ai-prediction'
+      path: '/ai-prediction'
+      fullPath: '/ai-prediction'
+      preLoaderRoute: typeof AiPredictionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-monitoring': {
+      id: '/live-monitoring'
+      path: '/live-monitoring'
+      fullPath: '/live-monitoring'
+      preLoaderRoute: typeof LiveMonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/water-quality': {
+      id: '/water-quality'
+      path: '/water-quality'
+      fullPath: '/water-quality'
+      preLoaderRoute: typeof WaterQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiPredictionRoute: AiPredictionRoute,
+  LiveMonitoringRoute: LiveMonitoringRoute,
+  WaterQualityRoute: WaterQualityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
